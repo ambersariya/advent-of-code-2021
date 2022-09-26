@@ -1,6 +1,6 @@
 import pytest
 
-from advent_of_code_2021.depth_calculator import calculate_depth, NotEnoughReadings
+from advent_of_code_2021.submarine import calculate_depth, NotEnoughReadings
 
 
 def test_raises_exceptions_when_there_is_less_than_2_measurements():

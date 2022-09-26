@@ -1,6 +1,6 @@
 import sys
 
-from advent_of_code_2021.depth_calculator import convert_readings, calculate_depth
+from advent_of_code_2021.submarine import convert_readings, calculate_depth
 
 
 def sonar_readings(input: str):
