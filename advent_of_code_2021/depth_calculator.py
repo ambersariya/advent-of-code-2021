@@ -22,7 +22,13 @@ def calculate_depth(readings: list[int]) -> int:
     return increase_times
 
 
-def convert_readings(sonar_readings):
+def convert_readings(sonar_readings) -> list[int]:
     if len(sonar_readings) < 3:
         raise NotEnoughReadingsToConvert()
-    return [reduce(lambda a, b: a + b, sonar_readings)]
+    if len(sonar_readings) == 3:
+        return [reduce(lambda a, b: a + b, sonar_readings)]
+    last_reading_block_starts = len(sonar_readings) - 3
+    readings = []
+    for index, _ in enumerate(sonar_readings[:last_reading_block_starts+1]):
+        readings.append(sonar_readings[index] + sonar_readings[index+1] + sonar_readings[index+2])
+    return readings
