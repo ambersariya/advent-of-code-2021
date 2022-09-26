@@ -34,4 +34,4 @@ def convert_readings(sonar_readings) -> list[int]:
 
 class Submarine:
     def move(self, commands) -> int:
-        pass
+        return 0
