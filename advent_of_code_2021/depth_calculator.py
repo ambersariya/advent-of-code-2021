@@ -1,3 +1,6 @@
+from functools import reduce
+
+
 class NotEnoughReadings(Exception):
     pass
 
@@ -22,3 +25,4 @@ def calculate_depth(readings: list[int]) -> int:
 def convert_readings(sonar_readings):
     if len(sonar_readings) < 3:
         raise NotEnoughReadingsToConvert()
+    return [reduce(lambda a, b: a + b, sonar_readings)]
