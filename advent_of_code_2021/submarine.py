@@ -30,3 +30,8 @@ def convert_readings(sonar_readings) -> list[int]:
     for index, _ in enumerate(sonar_readings[:last_valid_sliding_window_index + 1]):
         readings.append(sonar_readings[index] + sonar_readings[index + 1] + sonar_readings[index + 2])
     return readings
+
+
+class Submarine:
+    def move(self, commands) -> int:
+        pass
