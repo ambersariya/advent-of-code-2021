@@ -1,12 +1,12 @@
-from functools import reduce
-
-
 class NotEnoughReadings(Exception):
     pass
 
 
 class NotEnoughReadingsToConvert(Exception):
     pass
+
+
+SLIDING_WINDOW_SIZE = 3
 
 
 def calculate_depth(readings: list[int]) -> int:
@@ -23,12 +23,10 @@ def calculate_depth(readings: list[int]) -> int:
 
 
 def convert_readings(sonar_readings) -> list[int]:
-    if len(sonar_readings) < 3:
+    if len(sonar_readings) < SLIDING_WINDOW_SIZE:
         raise NotEnoughReadingsToConvert()
-    if len(sonar_readings) == 3:
-        return [reduce(lambda a, b: a + b, sonar_readings)]
-    last_reading_block_starts = len(sonar_readings) - 3
+    last_valid_sliding_window_index = len(sonar_readings) - SLIDING_WINDOW_SIZE
     readings = []
-    for index, _ in enumerate(sonar_readings[:last_reading_block_starts+1]):
-        readings.append(sonar_readings[index] + sonar_readings[index+1] + sonar_readings[index+2])
+    for index, _ in enumerate(sonar_readings[:last_valid_sliding_window_index + 1]):
+        readings.append(sonar_readings[index] + sonar_readings[index + 1] + sonar_readings[index + 2])
     return readings
