@@ -2,6 +2,10 @@ class NotEnoughReadings(Exception):
     pass
 
 
+class NotEnoughReadingsToConvert(Exception):
+    pass
+
+
 def calculate_depth(readings: list[int]) -> int:
     if len(readings) <= 1:
         raise NotEnoughReadings()
@@ -13,3 +17,8 @@ def calculate_depth(readings: list[int]) -> int:
         last_depth = reading
 
     return increase_times
+
+
+def convert_readings(sonar_readings):
+    if len(sonar_readings) < 3:
+        raise NotEnoughReadingsToConvert()
