@@ -1,4 +1,4 @@
-from advent_of_code_2021.submarine import Submarine
+from day02.submarine import Submarine
 
 
 def test_interpreted_position_is_at_zero():
