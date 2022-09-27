@@ -1,6 +1,7 @@
 import pytest
 
-from advent_of_code_2021.submarine import NotEnoughReadingsToConvert, convert_readings
+from advent_of_code_2021.submarine import convert_readings
+from advent_of_code_2021.error import NotEnoughReadingsToConvert
 
 
 def test_raise_error_when_less_than_three_readings_are_provided():
