@@ -12,7 +12,7 @@ class DiagnosticsService:
             raise NotEnoughRawData()
         report_matrix = list(map(lambda entry: list(entry), raw_report))
         binary_gamma = ''
-        for index in range(0, 5):
+        for index in range(0, len(report_matrix[0])):
             columnar_bits = column(report_matrix, index)
             num_of_zeros = self.__num_of_zeros(columnar_bits)
             total_bits = len(columnar_bits)
