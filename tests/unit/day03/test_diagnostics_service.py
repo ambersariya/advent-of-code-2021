@@ -19,3 +19,4 @@ def test_should_return_diagnostic_report():
 
     assert report.gamma_rate == 4
     assert report.epsilon_rate == 27
+    assert report.power_consumption == 108
