@@ -1,5 +1,6 @@
 import pytest
 
+from advent_of_code_2021.day03.diagnostics_report import DiagnosticsReport
 from advent_of_code_2021.day03.diagnostics_service import DiagnosticsService
 from advent_of_code_2021.day03.error import NotEnoughRawData
 
@@ -17,6 +18,7 @@ def test_should_return_diagnostic_report():
     diagnostics_service = DiagnosticsService()
     report = diagnostics_service.generate_report(raw_report=raw_report)
 
+    assert isinstance(report, DiagnosticsReport)
     assert report.gamma_rate == 4
     assert report.epsilon_rate == 27
     assert report.power_consumption == 108
