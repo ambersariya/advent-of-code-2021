@@ -1,7 +1,7 @@
 import pytest
 
-from day01.sonar import convert_readings
-from day01.error import NotEnoughReadingsToConvert
+from advent_of_code_2021.day01.sonar import convert_readings
+from advent_of_code_2021.day01.error import NotEnoughReadingsToConvert
 
 
 def test_raise_error_when_less_than_three_readings_are_provided():

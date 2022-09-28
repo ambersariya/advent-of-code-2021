@@ -1,17 +1,21 @@
 class Position:
-
-    def __init__(self, distance: int = 0, depth: int = 0):
+    def __init__(self, horizontal: int = 0, depth: int = 0, aim: int = 0):
+        self.aim = aim
         self.depth = depth
-        self.distance = distance
+        self.horizontal = horizontal
 
-    def update_distance(self, input_value: int):
-        self.distance += input_value
+    def update_distance(self, forward: int) -> "Position":
+        self.horizontal += forward
+        self.depth += (self.aim * forward)
+        return self
 
-    def decrease_depth(self, input_value: int):
-        self.depth -= input_value
+    def increase_aim(self, down: int) -> "Position":
+        self.aim += down
+        return self
 
-    def increase_depth(self, input_value: int):
-        self.depth += input_value
+    def decrease_aim(self, up: int) -> "Position":
+        self.aim -= up
+        return self
 
     def calculate_position(self) -> int:
-        return self.depth * self.distance
+        return self.depth * self.horizontal
