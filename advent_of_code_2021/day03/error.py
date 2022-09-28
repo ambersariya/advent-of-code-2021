@@ -1,0 +1,2 @@
+class NotEnoughRawData(Exception):
+    pass
