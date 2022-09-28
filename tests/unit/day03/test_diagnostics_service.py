@@ -29,6 +29,6 @@ def test_should_return_diagnostic_report_from_multiple_raw_readings():
     diagnostics_service = DiagnosticsService()
     report = diagnostics_service.generate_report(raw_report=raw_report)
 
-    assert report.gamma_rate == 25
-    assert report.epsilon_rate == 37
-    assert report.power_consumption == 925
+    assert report.gamma_rate == 21
+    assert report.epsilon_rate == 10
+    assert report.power_consumption == 210
