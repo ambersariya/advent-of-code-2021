@@ -19,10 +19,13 @@ def raw_report():
             "01010"]
 
 
-def test_diagnostics_report_checks_power_consumption(raw_report):
+def test_return_diagnostics_report_from_raw_readings(raw_report):
     diagnostics_service = DiagnosticsService()
     report = diagnostics_service.generate_report(raw_report=raw_report)
 
     assert report.power_consumption == 198
     assert report.gamma_rate == 22
     assert report.epsilon_rate == 9
+    assert report.oxygen_generator_rate == 23
+    assert report.co2_scrubber_rate == 10
+    assert report.life_support_rate == 230

@@ -22,6 +22,8 @@ def test_should_return_diagnostic_report_with_one_raw_reading():
     assert report.gamma_rate == 4
     assert report.epsilon_rate == 27
     assert report.power_consumption == 108
+    assert report.oxygen_generator_rate == 4
+    assert report.co2_scrubber_rate == 4
 
 
 def test_should_return_diagnostic_report_from_multiple_raw_readings():
@@ -32,3 +34,5 @@ def test_should_return_diagnostic_report_from_multiple_raw_readings():
     assert report.gamma_rate == 21
     assert report.epsilon_rate == 10
     assert report.power_consumption == 210
+    assert report.oxygen_generator_rate == 21
+    assert report.co2_scrubber_rate == 4
