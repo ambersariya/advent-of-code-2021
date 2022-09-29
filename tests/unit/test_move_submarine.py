@@ -7,7 +7,7 @@ def test_interpreted_position_is_at_zero():
     assert actual_position == 0
 
 
-def test_interpreted_position_is_at_minus_one_after_moving_one_and_increasing_depth_by_one():
+def test_interpreted_position_is_at_zero_after_moving_one_and_turning_one_time():
     submarine = Submarine()
     actual_position = submarine.move(commands=["forward 1", "down 1"])
-    assert actual_position == 1
+    assert actual_position == 0
