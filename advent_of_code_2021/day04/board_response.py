@@ -5,4 +5,4 @@ from dataclasses import dataclass
 class BoardResponse:
     victory: bool
     rounds_passed: int
-    last_number_on_board: bool
+    is_last_number_present: bool

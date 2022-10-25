@@ -30,4 +30,14 @@ class Board:
         return int(self.board[row][column])
 
     def check_number(self, number: int) -> BoardResponse:
-        raise NotImplementedError()
+        found = False
+        for row in self.board:
+            if str(number) in row:
+                found = True
+                break
+
+        return BoardResponse(
+            victory=False,
+            rounds_passed=1,
+            is_last_number_present=found
+        )
