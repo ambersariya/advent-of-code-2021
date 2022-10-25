@@ -1,43 +1,22 @@
-from dataclasses import dataclass
+from advent_of_code_2021.day04.board import Board
+from tests.unit.day04.conftest import RAW_STR
 
-
-@dataclass(init=True, frozen=True)
-class Board:
-    board: list
-
-    @staticmethod
-    def parse(raw_str: str) -> "Board":
-        board = []
-        raw_str = raw_str.strip("\n")
-        generate_rows = raw_str.split("\n")
-        for row in generate_rows:
-            row = list(filter(lambda r: len(r) > 0, row.split(" ")))
-            board.append(row)
-        return Board(board=board)
-
-    @property
-    def rows(self) -> int:
-        return len(self.board)
-
-    @property
-    def columns(self) -> int:
-        return len(self.board[0])
-
-    def number_at(self, row: int, column: int) -> int:
-        return int(self.board[row][column])
-
+DRAW_NUMBERS = [7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1]
 
 def test_generate_a_board_from_string():
-    raw_str = '''
-22 13 17 11  0
-8  2 23  4 24
-21  9 14 16  7
-6 10  3 18  5
-1 12 20 15 19
-'''
-    game_board = Board.parse(raw_str=raw_str)
+
+    game_board = Board.parse(raw_str=RAW_STR)
 
     assert game_board.rows == 5
     assert game_board.columns == 5
-    assert game_board.number_at(column=1, row=0) == 13
-    assert game_board.number_at(column=2, row=2) == 14
+    assert game_board.number_at(column=1, row=0) == 21
+    assert game_board.number_at(column=2, row=2) == 23
+
+
+def test_check_if_a_number_is_present(game_board):
+    response = game_board.check_number(number=7)
+
+    assert response.victory is False
+    assert response.rounds_passed == 1
+    assert response.last_number_on_board is True
+
