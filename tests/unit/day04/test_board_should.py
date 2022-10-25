@@ -20,3 +20,31 @@ def test_check_if_a_number_is_present(game_board):
     assert response.rounds_passed == 1
     assert response.is_last_number_present is True
 
+
+def test_check_if_a_number_is_not_present(game_board):
+    response = game_board.check_number(number=99)
+
+    assert response.victory is False
+    assert response.rounds_passed == 1
+    assert response.is_last_number_present is False
+
+
+def test_check_if_we_can_roll_more_than_one_round(game_board):
+    game_board.check_number(number=1)
+    response = game_board.check_number(number=9)
+
+    assert response.victory is False
+    assert response.rounds_passed == 2
+    assert response.is_last_number_present is True
+
+
+def test_should_tell_us_about_victory_when_the_full_column_is_marked(game_board):
+    game_board.check_number(number=14)
+    game_board.check_number(number=10)
+    game_board.check_number(number=18)
+    game_board.check_number(number=22)
+    response = game_board.check_number(number=2)
+
+    assert response.victory is True
+    assert response.rounds_passed == 5
+    assert response.is_last_number_present is True
